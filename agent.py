@@ -42,5 +42,5 @@ my_check = check(my_pass, 0, [], add_number)
 my_check = check(my_check, 0, [], change_case)
 
 
-with open(file, 'a+') as my_file:
-    my_file.write(' '.join(my_check))
+with open(file, 'w') as my_file:
+    my_file.write('\n'.join(my_check))
