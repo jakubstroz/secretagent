@@ -31,6 +31,13 @@ def change_case(password: str, number, newlist):
     return change_case(password, number + 1, newlist)
 
 
+def add_char(password: str, number, newlist):
+    if number > len(password): return newlist
+    password2 = password[:number] + '!' + password[number:]
+    newlist.append(password2)
+    return add_char(password, number + 1, newlist)
+
+
 def check(li_st, position, new, func):
     new += func(li_st[position], 0, [])
     if position < len(li_st) - 1:
@@ -40,7 +47,7 @@ def check(li_st, position, new, func):
 
 my_check = check(my_pass, 0, [], add_number)
 my_check = check(my_check, 0, [], change_case)
-
+my_check = check(my_check, 0, [], add_char)
 
 with open(file, 'w') as my_file:
     my_file.write('\n'.join(my_check))
